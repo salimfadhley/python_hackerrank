@@ -1,8 +1,6 @@
-import bisect
 import sys
 from collections import defaultdict
 from typing import Tuple, Sequence
-
 
 def numbers_iterator(f):
     for line in f:
@@ -16,6 +14,7 @@ def numbers_iterator(f):
 def count(row:Sequence[Tuple[int,int]])->int:
     if not row:
         return 0
+
     row_sorted = sorted(row)
     compacted = [row_sorted.pop(0)]
 
@@ -38,8 +37,8 @@ def main(inp=sys.stdin):
     for ri, s, e in ni:
         track = (s,e)
         rows[ri].append(track)
-    res = sum(m - count(rows[i]) for i in range(1, n+1))
+    res = (m*n) - sum(count(row) for row in rows.values())
     print(res)
 
 if __name__ == "__main__":
-    main(open("trains_input.txt"))
+    main(open("trains_input_0.txt"))
