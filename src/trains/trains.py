@@ -7,21 +7,28 @@ from typing import Tuple, Sequence
 def numbers_iterator(f):
     for line in f:
         numbers = line.strip().split(" ")
-        yield [int(i) for i in numbers]
+        try:
+            yield [int(i) for i in numbers]
+        except ValueError:
+            raise RuntimeError("Error parsing line %r" % line)
 
-
-def insert(tracks:list, track:Tuple[int, int]):
-    i = bisect.bisect_left(tracks, track)
-    tracks.insert(i, track)
 
 def count(row:Sequence[Tuple[int,int]])->int:
     if not row:
         return 0
+    row_sorted = sorted(row)
+    compacted = [row_sorted.pop(0)]
 
-    print(row)
+    for n in row_sorted:
 
-    return 0
+        if n[0] > compacted[-1][1]:
+            compacted.append(n)
+            continue
 
+        if n[1] > compacted[-1][1]:
+            compacted[-1] = (compacted[-1][0], n[1])
+
+    return sum((1+t[1]-t[0]) for t in compacted)
 
 
 def main(inp=sys.stdin):
@@ -30,7 +37,7 @@ def main(inp=sys.stdin):
     rows = defaultdict(list)
     for ri, s, e in ni:
         track = (s,e)
-        insert(rows[ri], track)
+        rows[ri].append(track)
     res = sum(m - count(rows[i]) for i in range(1, n+1))
     print(res)
 
