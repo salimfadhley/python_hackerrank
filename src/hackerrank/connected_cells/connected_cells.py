@@ -27,7 +27,7 @@ class G:
 
     def adjacent(self, cell: Tuple[int, int]):
         return (c for c in
-                [(cell[0]+i, cell[1]+j) for i,j in self.ADJACENCT] if
+                [(cell[0]+i, cell[1]+j) for i, j in self.ADJACENCT] if
                 self.is_node(c))
 
     def is_node(self, n: Tuple[int, int]) -> bool:
@@ -58,7 +58,8 @@ def main(inp: TextIO = sys.stdin, out: IO = sys.stdout):
 
     visited = set()
 
-    res = max(graph.visit(n, visited) for n in graph.nodes() if not n in visited)
+    res = max(graph.visit(n, visited)
+              for n in graph.nodes() if not n in visited)
 
     print(res)
 

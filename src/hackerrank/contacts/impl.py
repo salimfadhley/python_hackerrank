@@ -20,7 +20,6 @@ def find(t, word)->int:
 def impl(inputlines):
     next(inputlines)
 
-
     commands = {
         "add": add,
         "find": find
@@ -35,13 +34,7 @@ def impl(inputlines):
         if result is not None:
             yield str(result)
 
+
 if __name__ == "__main__":
     for line in impl((l.strip() for l in sys.stdin)):
         print(line)
-
-
-
-
-
-
-

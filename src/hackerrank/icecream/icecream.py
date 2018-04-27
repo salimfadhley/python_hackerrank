@@ -41,7 +41,7 @@ def numbers_iterator(f):
         yield [int(i) for i in numbers]
 
 
-def main(inp:IO=sys.stdin, out:IO=sys.stdout):
+def main(inp: IO=sys.stdin, out: IO=sys.stdout):
     ni = numbers_iterator(inp)
     repeats, *_ = next(ni)
 

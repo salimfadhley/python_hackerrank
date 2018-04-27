@@ -2,6 +2,7 @@ import unittest
 
 from hackerrank.contacts.impl import find, add
 
+
 def get_trie_node():
     return {}, {}
 
@@ -30,6 +31,7 @@ class TestFoo(unittest.TestCase):
         add(t, "abd")
 
         self.assertEqual(find(t, "ab"), 2)
+
 
 if __name__ == "__main__":
     unittest.main()

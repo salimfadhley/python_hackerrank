@@ -10,7 +10,7 @@ from hackerrank.contacts.impl import impl
 
 
 def main(inp=sys.stdin):
-    return impl(l.strip() for l  in inp)
+    return impl(l.strip() for l in inp)
 
 
 def get_test_files(maxn=10, input_template="input%i.txt", expected_template="expected%i.txt"):
@@ -30,7 +30,8 @@ if __name__ == "__main__":
                 result = list(main(inf))
                 expected_text = list(l.strip() for l in exf)
 
-                differences = list(difflib.context_diff(result, expected_text, input_filename, expected_filename))
+                differences = list(difflib.context_diff(
+                    result, expected_text, input_filename, expected_filename))
                 if differences:
                     for diff in differences:
                         print(diff)

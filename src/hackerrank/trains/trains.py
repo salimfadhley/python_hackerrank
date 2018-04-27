@@ -2,6 +2,7 @@ import sys
 from collections import defaultdict
 from typing import Tuple, Sequence
 
+
 def numbers_iterator(f):
     for line in f:
         numbers = line.strip().split(" ")
@@ -11,7 +12,7 @@ def numbers_iterator(f):
             raise RuntimeError("Error parsing line %r" % line)
 
 
-def count(row:Sequence[Tuple[int,int]])->int:
+def count(row: Sequence[Tuple[int, int]])->int:
     if not row:
         return 0
 
@@ -32,13 +33,14 @@ def count(row:Sequence[Tuple[int,int]])->int:
 
 def main(inp=sys.stdin):
     ni = numbers_iterator(inp)
-    n,m,k = next(ni)
+    n, m, k = next(ni)
     rows = defaultdict(list)
     for ri, s, e in ni:
-        track = (s,e)
+        track = (s, e)
         rows[ri].append(track)
     res = (m*n) - sum(count(row) for row in rows.values())
     print(res)
+
 
 if __name__ == "__main__":
     main(open("trains_input_0.txt"))
