@@ -1,4 +1,4 @@
-import sys
+# https://www.hackerrank.com/challenges/ctci-contacts/problem
 
 
 def add(t, word):
@@ -20,7 +20,6 @@ def find(t, word):
     return t[1]
 
 
-
 def impl(inputlines):
     next(inputlines)
 
@@ -40,5 +39,6 @@ def impl(inputlines):
 
 
 if __name__ == "__main__":
+    import sys
     for line in impl((l.strip() for l in sys.stdin)):
         print(line)
