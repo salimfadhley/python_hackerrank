@@ -4,7 +4,7 @@ from hackerrank.contacts.impl import find, add
 
 
 def get_trie_node():
-    return {}, {}
+    return [{}, 0]
 
 
 class TestFoo(unittest.TestCase):

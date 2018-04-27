@@ -1,26 +1,23 @@
 import sys
 
 
-def add(t, word)->None:
-    while word:
-        head = word.pop(0)
-        d, c = t
-        c[head] = c.get(head, 0) + 1
-        t = d.setdefault(head, ({}, {}))
-
-
-def find(t, word)->int:
+def add(t, word):
+    d, c = t
+    t[1] = c + 1
     if word:
-        head, *rest = word
-        if rest:
-            try:
-                return find(t[0][head], rest)
-            except KeyError:
-                return 0
-        else:
-            return t[1].get(head,0)
-    else:
-        return sum(t[1].values())
+        head, *tail = word
+        add(d.setdefault(head, [{}, 0]), tail)
+
+
+def find(t, word):
+    while word:
+        head, *word = word
+        try:
+            t = t[0][head]
+        except KeyError:
+            return 0
+
+    return t[1]
 
 
 
@@ -32,7 +29,7 @@ def impl(inputlines):
         "find": find
     }
 
-    trie = ({}, {})
+    trie = [{}, 0]
 
     for l in inputlines:
         command, word = l.strip().split(" ")
