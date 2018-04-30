@@ -15,7 +15,7 @@ class test_coin_change(unittest.TestCase):
         self.assertEqual(change(2,frozenset({6,9})), 0)
 
     def test_trivial3(self):
-        self.assertEqual(change(4,frozenset({1,2})), 0)
+        self.assertEqual(change(4,frozenset({1,2})), 3)
 
     def test_trivial4(self):
         self.assertEqual(change(1,frozenset({1})), 1)
