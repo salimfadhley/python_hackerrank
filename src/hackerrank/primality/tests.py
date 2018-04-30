@@ -13,7 +13,7 @@ class test_coin_change(unittest.TestCase):
             return self.assertTrue(is_prime(p), "%i is expected to be prime" % p)
 
     def test_non_prime(self):
-        for p in range(2,200):
+        for p in range(0,200):
             if p not in PRIMES:
                 return self.assertFalse(is_prime(p), "%i is not to be prime" % p)
 

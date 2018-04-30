@@ -1,4 +1,5 @@
-# https://www.hackerrank.com/challenges/ctci-coin-change/problem
+# https://www.hackerrank.com/challenges/ctci-big-o/problem
+
 import math
 
 
@@ -9,7 +10,7 @@ def is_prime(n):
         return True
     if n % 2 == 0:
         return False
-    if n % 5 == 0:
+    if n % 3 == 0:
         return False
     i = 5
     while i <= math.sqrt(n):
@@ -25,7 +26,7 @@ def impl(inputlines):
     next(inputlines)
 
     for l in inputlines:
-        yield is_prime(int(l)) and "Prime" or "Not Prime"
+        yield is_prime(int(l)) and "Prime" or "Not prime"
 
 
 if __name__ == "__main__":
